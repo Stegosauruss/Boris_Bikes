@@ -1,2 +1,3 @@
 describe Bike do
+  
 end
