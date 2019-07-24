@@ -11,21 +11,33 @@ class DockingStation
     end
 
     def release_bike
-        if docked_bikes.empty? == true
-            begin
-                raise 'There is no bike'
-            end
-        else
-            bike = Bike.new
-            return bike
+        if empty?
+            raise 'There is no bike'
         end
+        return Bike.new
     end
 
     def dock_bike(bike)
-        if docked_bikes.size > 19
+        if full?
             raise 'The docking station is full'
-        else
-            docked_bikes << bike
         end
+        add_bike(bike)    
     end
+
+    private
+    def full?
+        docked_bikes.size > 19
+    end
+
+    def add_bike(bike)
+        docked_bikes << bike
+    end
+
+    def empty?
+        docked_bikes.empty?
+    end
+
+
+
+
 end
