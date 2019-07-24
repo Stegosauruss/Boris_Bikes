@@ -31,4 +31,18 @@ describe DockingStation do
     bike = Bike.new
     expect{subject.dock_bike(bike)}.to raise_error('The docking station is full')
   end
+
+  it '@capacity use default value when not set' do
+    test_station = DockingStation.new()
+    expect(test_station.capacity).to eq(20)
+  end
+
+  it '@capacity can be set during initialization' do
+    test_station = DockingStation.new(200)
+    expect(test_station.capacity).to eq(200)
+  end
+
+
+
+
 end
